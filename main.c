@@ -23,7 +23,7 @@ int main(void)
 
     while (1) {
         GPIO2_DR |=  (1 << 3);
-        delay(60000000);
+        delay(30000000);
         GPIO2_DR &= ~(1 << 3);
         delay(60000000);
     }
