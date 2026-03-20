@@ -15,9 +15,6 @@ CFLAGS = $(CPU_FLAGS) \
     -fno-builtin \
     -DARDUINO_TEENSY41 \
     -Wall \
-    -I./lib \
-    -I./periph \
-    -I./lib/sdk \
     -DCPU_MIMXRT1062DVL6A
 
 
@@ -30,7 +27,7 @@ LDFLAGS = $(CPU_FLAGS) \
     -lgcc \
     -lm
 
-SRCS = $(wildcard *.c) $(wildcard lib/*.c) $(wildcard periph/*.c) $(wildcard lib/sdk/*.c)
+SRCS = $(wildcard *.c)
 OBJS = $(SRCS:.c=.o)
 TARGET = firmware
 
