@@ -13,16 +13,24 @@ CFLAGS = $(CPU_FLAGS) \
     -ffunction-sections \
     -fdata-sections \
     -fno-builtin \
-    -nostdlib \
     -DARDUINO_TEENSY41 \
-    -Wall
+    -Wall \
+    -I./lib \
+    -I./periph \
+    -I./lib/sdk \
+    -DCPU_MIMXRT1062DVL6A
+
 
 LDFLAGS = $(CPU_FLAGS) \
     -T imxrt1062_t41.ld \
     -Wl,--gc-sections \
-    -nostdlib
+    -nostartfiles \
+    -lc \
+    -lnosys \
+    -lgcc \
+    -lm
 
-SRCS = main.c startup.c bootdata.c
+SRCS = $(wildcard *.c) $(wildcard lib/*.c) $(wildcard periph/*.c) $(wildcard lib/sdk/*.c)
 OBJS = $(SRCS:.c=.o)
 TARGET = firmware
 
